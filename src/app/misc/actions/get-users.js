@@ -72,3 +72,23 @@ export function* watchUsers() {
       yield _getUsers()
    })
 }
+
+// redux-thunk sample
+export function getTheUsers() {
+   return async (dispatch, getState) => {
+      const status = createStatusActionCreator('getUsers')
+      try {
+         dispatch(status.process())
+         const response = await Users.getUsers()
+         dispatch ({
+            type: SET_USERS,
+            payload: response || []
+         })
+         dispatch(status.end())
+      } catch (e) {
+         console.log('error')
+         console(e.message)
+         dispatch(status.fail(e.message))
+      }
+   }
+}

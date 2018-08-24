@@ -11,11 +11,16 @@ import {
    List
 } from '../../../../../common/components'
 import { connect } from 'react-redux'
-import { getUsers } from '../../actions/get-users'
+import { getUsers, getTheUsers } from '../../actions/get-users'
+import { bindActionCreators } from 'redux'
 
 const mapActionToProps = {
    getUsers
 }
+const mapActionToProps2 = dispatch => bindActionCreators({
+   getTheUsers
+}, dispatch)
+
 const mapStateToProps = store => ({
    owner: store.misc.owner || {},
    status: store.misc.status.getUsers || {},
@@ -24,9 +29,11 @@ const mapStateToProps = store => ({
 class InitialScreenPage extends React.Component {
    constructor (props) {
       super(props)
+      console.log('constructor')
       this.state = {}
    }
    render () {
+      console.log('render')
       const { owner, status, users } = this.props
       return (
          <View style={styles.container}>
@@ -88,8 +95,23 @@ class InitialScreenPage extends React.Component {
       )
    }
    componentDidMount() {
-      this.props.getUsers()
+      console.log('componentDidMount')
+      // this.props.getUsers()
+      this.props.getTheUsers()
    }
+
+//    static  getDerivedStateFromProps(props,state) {
+//       console.log('getDerivedStateFromProps')
+//    }
+
+//    getSnapshotBeforeUpdate(prevProps, prevState) {
+//       console.log('getSnapshotBeforeUpdate')
+//    }
+
+//    componentDidUpdate() {
+//       console.log('componentDidUpdate')
+//    }
+
 }
 
 const styles = StyleSheet.create({
@@ -141,4 +163,4 @@ const styles = StyleSheet.create({
    }
 })
 
-export default connect(mapStateToProps, mapActionToProps)(InitialScreenPage)
+export default connect(mapStateToProps, mapActionToProps2)(InitialScreenPage)
