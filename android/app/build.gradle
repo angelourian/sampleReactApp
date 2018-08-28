@@ -73,8 +73,16 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "index.js"
+    entryFile: "index.js",
+    bundleInBeta: true,
+    devDisabledInBeta: true,
 ]
+
+apply plugin: 'io.fabric'
+
+repositories {
+  maven { url 'https://maven.fabric.io/public' }
+}
 
 apply from: "../../node_modules/react-native/react.gradle"
 
@@ -107,6 +115,16 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
     }
+    signingConfigs {
+        debug {
+            if(project.hasProperty('SAMPLE_DEVELOPMENT_STORE_FILE')){
+                storeFile file(SAMPLE_DEVELOPMENT_STORE_FILE)
+                storePassword SAMPLE_DEVELOPMENT_STORE_PASSWORD
+                keyAlias SAMPLE_DEVELOPMENT_KEY_ALIAS
+                keyPassword SAMPLE_DEVELOPMENT_KEY_PASSWORD
+            }
+        }
+    }
     splits {
         abi {
             reset()
@@ -116,6 +134,13 @@ android {
         }
     }
     buildTypes {
+        beta {
+            initWith release
+            applicationIdSuffix ".beta"
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            // matchingFallbacks = ['release', 'debug']
+        }
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
@@ -140,6 +165,9 @@ dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
+    compile('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') {
+      transitive = true;
+   }
 }
 
 // Run this once to be able to run the application with BUCK
