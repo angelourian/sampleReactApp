@@ -4,8 +4,14 @@
  * @flow
  */
 import React, { Component } from 'react'
+import { Platform, UIManager } from 'react-native'
 import { Story } from './common/components'
 import InitialScreenPage from './src/app/misc/scenes/InitialScreen/InitialScreenPage'
+
+if (Platform.OS === 'android') {
+   UIManager.setLayoutAnimationEnabledExperimental &&
+   UIManager.setLayoutAnimationEnabledExperimental(true)
+}
 
 class App extends Component {
    render() {

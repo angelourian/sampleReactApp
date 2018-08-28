@@ -4,6 +4,7 @@ import {
    Image,
    StyleSheet,
    Text,
+   TouchableOpacity,
    View
 } from 'react-native'
 import {
@@ -13,6 +14,8 @@ import {
 import { connect } from 'react-redux'
 import { getUsers, getTheUsers } from '../../actions/get-users'
 import { bindActionCreators } from 'redux'
+
+import { GoogleSignin } from 'react-native-google-signin'
 
 const mapActionToProps = {
    getUsers
@@ -39,6 +42,11 @@ class InitialScreenPage extends React.Component {
          <View style={styles.container}>
             <View style = {[styles.header]}>
                <Text style = {styles.headerText}>Sample React Native Mobile App</Text>
+               <TouchableOpacity
+                  onPress = {() => this.googleSignin()}
+               >
+                  <Text>Google Signin</Text>
+               </TouchableOpacity>
             </View>
             <View style = {styles.contentContainer}>
                <If value = {status.processing}>
@@ -98,6 +106,32 @@ class InitialScreenPage extends React.Component {
       console.log('componentDidMount')
       // this.props.getUsers()
       this.props.getTheUsers()
+   }
+
+   googleSignin() {
+      console.log('Google Signin')
+      GoogleSignin.hasPlayServices({ autoResolve: true })
+         .then(success=> {
+            if (success) {
+               GoogleSignin.configure({
+                  webClientId: '773889054044-gq8lq98sqq4kai697ir3r18k59nvm5mm.apps.googleusercontent.com', // only for web
+               })
+               .then(success=> {
+                  if (success) {
+                     GoogleSignin.signIn()
+                     .then(user => {
+                        console.log('user')
+                        console.log(user)
+                     })
+                     .catch(error => {
+                        console.log('error')
+                        console.log(error)
+                     })
+                  }
+               })
+            }
+         })
+       
    }
 
 //    static  getDerivedStateFromProps(props,state) {
