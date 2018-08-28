@@ -6,3 +6,4 @@ Basic Sample React Native App
 - React Navigation
 - Redux
 - Redux Saga
+- Redux Thunk
