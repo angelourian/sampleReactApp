@@ -68,8 +68,6 @@ export default class User extends Realm.Object {
    }
 
    static save = (data) => {
-      console.log('realm po')
-      console.log(data)
       realm.write(() => {
          realm.create('User', {
             ...data
