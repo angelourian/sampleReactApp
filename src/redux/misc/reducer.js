@@ -1,7 +1,7 @@
 import * as types from './types'
 
 const initialState = {
-   owner: 'MARK ANGELO URIAN',
+   owner: 'MASURIAN',
    status: {},
    users: []
 }
@@ -15,10 +15,10 @@ export default (state = initialState, action) => {
             users: userList
          }
       case types.SET_APP_OWNER:
-         const { payload : {} } = action
+         const { payload : owner } = action
          return {
             ...state,
-            owner: state.misc.owner
+            owner: owner ? owner : state.misc.owner
          }
       case types.SET_STATUS:
          const { update, key, payload = {} } = action
