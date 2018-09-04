@@ -122,10 +122,12 @@ class InitialScreenPage extends React.Component {
                      .then(user => {
                         console.log('user')
                         console.log(user)
+                        alert(user.name)
                      })
                      .catch(error => {
                         console.log('error')
                         console.log(error)
+                        alert(error)
                      })
                   }
                })

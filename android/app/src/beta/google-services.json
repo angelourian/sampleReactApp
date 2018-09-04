@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "773889054044",
+    "firebase_url": "https://samplereactapp-7ae7d.firebaseio.com",
+    "project_id": "samplereactapp-7ae7d",
+    "storage_bucket": "samplereactapp-7ae7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773889054044:android:2d608c810e232ecc",
+        "android_client_info": {
+          "package_name": "com.sampleapp.beta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773889054044-gq8lq98sqq4kai697ir3r18k59nvm5mm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7B-d8inYbL5t7rCd-Z6yP5af9lmm-f_s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
