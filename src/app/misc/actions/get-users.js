@@ -3,6 +3,7 @@ import { SET_USERS } from '../../../redux/misc/types'
 import { compose } from 'redux'
 import { createStatusActionCreator } from '../../../shared/utils/saga'
 const GET_USERS = 'misc/users/get'
+import User from '../../../models/User'
 
 export const getUsers = (data) => ({
    type: GET_USERS,
@@ -79,16 +80,16 @@ export function getTheUsers() {
       const status = createStatusActionCreator('getUsers')
       try {
          dispatch(status.process())
-         const response = await Users.getUsers()
+         const response = await User.getUsers()
          dispatch ({
             type: SET_USERS,
             payload: response || []
          })
          dispatch(status.end())
       } catch (e) {
-         console.log('error')
+         console.log('error getTheUsers')
          console(e.message)
-         dispatch(status.fail(e.message))
+         dispatch(status.fail('Unable fetching of users!'))
       }
    }
 }

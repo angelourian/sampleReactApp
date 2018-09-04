@@ -55,6 +55,9 @@ class InitialScreenPage extends React.Component {
                <If value = {status.fail}>
                   <Text>Unable fetching of users!</Text>
                </If>
+               <If value = { !status.processing && users.length === 0}>
+                  <Text>No Users found!</Text>
+               </If>
                <If value = {status.end && users.length === 0}>
                   <Text>No Users found!</Text>
                </If>
