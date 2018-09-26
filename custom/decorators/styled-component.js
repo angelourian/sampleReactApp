@@ -25,10 +25,13 @@ export default (initialStyles, propertyStyle = {}, defaultStyle = {}) => {
             let generatedStyle = Object.keys(props)
                .filter(key => typeof propertyMap[key] !== 'undefined')
                .map(key => {
-                  if(typeof propertyMap[key] == 'function')
-                     return propertyMap[key](props[key])
+                  if(typeof propertyMap[key] == 'function') {
+                    return propertyMap[key](props[key])
+                  }
                   return styleSheet[key]
                })
+            
+            console.log(generatedStyle)
             
             this.style = [
                styleSheet.default,

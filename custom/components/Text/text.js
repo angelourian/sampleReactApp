@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text as RawText } from 'react-native'
-import StyledComponent from 'custom/decorators/styled-component' 
+import { StyledComponent } from 'custom/decorators' 
 
 import TextProperty from './text.property'
 import TextInitialStyle    from './text.style'
