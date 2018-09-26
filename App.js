@@ -5,10 +5,11 @@
  */
 import React, { Component } from 'react'
 import { Platform, UIManager } from 'react-native'
-import { Story } from './common/components'
+import { Story } from './custom/components'
 
 import SplashScreenPage from './src/app/misc/scenes/SplashScreen/SplashScreenPage'
 import InitialScreenPage from './src/app/misc/scenes/InitialScreen/InitialScreenPage'
+import TestingScreenPage from './src/app/misc/scenes/TestingScreen/TestingScreenPage'
 
 if (Platform.OS === 'android') {
    UIManager.setLayoutAnimationEnabledExperimental &&
@@ -18,9 +19,10 @@ if (Platform.OS === 'android') {
 class App extends Component {
    render() {
       return (
-         <Story id = "root" initialScene = "SplashScreen">
+         <Story id = "root" initialScene = "TestingScreen">
             <SplashScreenPage route ="SplashScreen" />
             <InitialScreenPage route = "InitialScreen" />
+            <TestingScreenPage route = "TestingScreen" />
          </Story>
       )
    }

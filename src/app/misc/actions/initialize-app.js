@@ -1,4 +1,4 @@
-import { Story } from '../../../../common/components'
+import { Story } from '../../../../custom/components'
 import { SET_APP_OWNER } from '../../../redux/misc/types'
 import openRealm from '../../../realm'
 

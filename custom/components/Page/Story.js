@@ -71,7 +71,6 @@ export default class Story extends React.Component {
 
    setupRouting() {
       const defaultAction = this.navigator.router.getStateForAction
-
       this.navigator.router.getStateForAction = (action, state) => {
          if (action.type === 'Navigation/INIT') return defaultAction(action, state)
          if (action.type === 'Navigation/RESET') {

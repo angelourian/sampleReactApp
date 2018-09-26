@@ -1,3 +1,16 @@
 {
-  "presets": ["react-native"]
+  "presets": ["react-native"],
+  "plugins": [
+    ["module-resolver", {
+        "root"       : ["./"],
+        "alias" : {
+           "custom" : "./custom",
+           "src"    : "./src",
+           "app"    : "./src/app",
+           "shared" : "./src/shared",
+           "theme"  : "./custom/config/theme",
+           "models" : "./src/models"
+        }
+    }]
+ ]
 }

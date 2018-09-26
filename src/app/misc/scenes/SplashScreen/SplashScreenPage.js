@@ -10,7 +10,7 @@ import {
 import {
    If,
    List
-} from '../../../../../common/components'
+} from '../../../../../custom/components'
 import { connect } from 'react-redux'
 import { initializeApp } from '../../actions/initialize-app'
 import { bindActionCreators } from 'redux'
